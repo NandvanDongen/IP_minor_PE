@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit</title>
+</head>
+<body>
+<h2>Edit task</h2>
+<form method="post" action="/{id}" th:object="${task}">
+    <p th:text="${#fields.globalErrors()}"></p>
+    <div>
+        <label for="title">Title: </label>
+        <input type="text" th:field="*{title}" id="title">
+        <p th:errors="*{title}"></p>
+    </div>
+    <div>
+        <input id="description" name="description" type="text" th:field="*{description}">
+        <label for="description">Description: </label>
+    </div>
+    <div>
+        <label for="dueDate"> Due date</label>
+        <input type="datetime-local" th:field="*{dueDate}" id="dueDate">
+    </div>
+    <input type="submit" value="edit task">
+</form>
+</body>
+</html>

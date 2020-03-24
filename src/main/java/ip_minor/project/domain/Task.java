@@ -3,7 +3,6 @@ package ip_minor.project.domain;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
@@ -15,16 +14,9 @@ public class Task {
    @NotNull
    private String title;
    private String description;
-   @NotEmpty
    private LocalDateTime dueDate;
 
    public Task() {
-   }
-
-   public Task(String title, String description, LocalDateTime ldt){
-      this.title = title;
-      this.description = description;
-      this.dueDate = ldt;
    }
 
    public String getTitle() { return title; }

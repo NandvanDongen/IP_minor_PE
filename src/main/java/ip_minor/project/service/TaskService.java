@@ -10,5 +10,7 @@ public interface TaskService {
 
     Task getTask(Long id);
 
-    void addTask(TaskDTO taskDTO);
+    void addTask(TaskDTO task);
+
+    void editTask(Long id, TaskDTO taskDTO);
 }

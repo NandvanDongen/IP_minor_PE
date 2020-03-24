@@ -29,21 +29,32 @@ public class TaskManagerController {
         return "form";
     }
 
-    @GetMapping("/{id}")
-    public String getTaskDetail(@PathVariable("id") Long id, Model model){
-        Task result = taskService.getTask(id);
-        model.addAttribute("task",result);
-        return "taskDetail";
-    }
-
     @PostMapping
-    public String addtask(@ModelAttribute @Valid TaskDTO taskDTO, BindingResult bindingResult){
+    public String addtask(@ModelAttribute @Valid TaskDTO task, BindingResult bindingResult){
         if (bindingResult.hasErrors()){
             return "form";
         }
-        taskService.addTask(taskDTO);
+        taskService.addTask(task);
         return "redirect:/tasks";
     }
 
 
+
+   /* @GetMapping("/{id}")
+    public String getTaskDetail(@PathVariable("id") Long id, Model model){
+        Task result = taskService.getTask(id);
+        List<String> errors =  new ArrayList<String>();
+        if(result == null){
+            errors.add("Task not found");
+        }
+        model.addAttribute("task",result);
+        return "taskDetail";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String editTask(@PathVariable("id") Long id, Model model){
+        Task result = taskService.getTask(id);
+        model.addAttribute(result);
+        return "edit";
+    }*/
 }

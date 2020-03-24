@@ -49,4 +49,16 @@ public class TaskServiceImpl implements TaskService {
         task.setDueDate(taskDTO.getDueDate());
         repository.save(task);
     }
+
+    @Override
+    public void editTask(Long id, TaskDTO taskDTO){
+        for (Task task: repository.findAll()) {
+            if(task.getId() == id){
+                task.setTitle(taskDTO.getTitle());
+                task.setDescription(taskDTO.getDescription());
+                task.setDueDate(taskDTO.getDueDate());
+                repository.save(task);
+            }
+        }
+    }
 }
