@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>TaskManager</title>
+</head>
+<body>
+<h2>Tasks</h2>
+<div th:insert="navbar.html"/>
+<div th:if="${tasks.isEmpty()}">
+    <p> No tasks left to do.</p>
+</div>
+<div th:if="${not tasks.isEmpty()}">
+    <ul>
+        <li th:each="task : ${tasks}"> <span th:text="*{task.title}"/> due <span th:text="*{task.dueDate.getMonth().toString().toLowerCase()}"/>  <span th:text="*{task.dueDate.getDayOfMonth()}"/> <span th:text="*{task.dueDate.getYear() } "/>  at <span th:text="*{task.dueDate.getHour()}"/>:<span th:text="*{task.dueDate.getMinute()}"/><li/>
+    </ul>
+</div>
+</body>
+</html>

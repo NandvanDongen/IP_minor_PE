@@ -15,6 +15,8 @@ public class Task {
    private String title;
    private String description;
    private LocalDateTime dueDate;
+   //private SubTask subtask;
+
 
    public Task() {
    }
@@ -44,4 +46,12 @@ public class Task {
    public Long getId(){ return id;}
 
    public void setId(Long id){ this.id = id;}
+
+   /*public SubTask getSubtask() {
+      return subtask;
+   }
+
+   public void setSubtask(SubTask subtask) {
+      this.subtask = subtask;
+   }*/
 }

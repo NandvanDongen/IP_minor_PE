@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Detail</title>
+</head>
+<body>
+<h2>Task Detail</h2>
+<div th:insert="navbar.html"/>
+<div th:if="${task == null}"> Task not found!</div>
+<div th:unless="${ task == null}">
+<table>
+    <tr>
+        <th>Title:</th>
+        <th>Description:</th>
+        <th>Due Date:</th>
+    </tr>
+    <tr>
+        <td th:text="${task.description}"></td>
+        <td th:text="${task.description}"></td>
+        <td> <span th:text="*{task.dueDate.getMonth().toString().toLowerCase()}"/>  <span th:text="*{task.dueDate.getDayOfMonth()}"/> <span th:text="*{task.dueDate.getYear() } "/>  at <span th:text="*{task.dueDate.getHour()}"/>:<span th:text="*{task.dueDate.getMinute()}"/>
+        </td>
+    </tr>
+</table>
+</div>
+</body>
+</html>

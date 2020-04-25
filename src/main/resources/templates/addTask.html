@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Task</title>
+</head>
+<body>
+<h2>Add task</h2>
+<div th:insert="navbar.html"/>
+<form method="post" action="/tasks/new" th:object="${task}">
+    <p th:if="${not #fields.globalErrors().isEmpty()}"th:text="${#fields.globalErrors()}"></p>
+    <div>
+        <label for="title">Title: </label>
+        <input type="text" th:field="*{title}" id="title">
+        <p th:errors="*{title}"></p>
+    </div>
+    <div>
+        <input id="description" name="description" type="text" th:field="*{description}">
+        <label for="description">Description: </label>
+    </div>
+    <div>
+        <label for="dueDate"> Due date</label>
+        <input type="datetime-local" th:field="*{dueDate}" id="dueDate">
+    </div>
+    <input type="submit" value="new task">
+</form>
+</body>
+</html>

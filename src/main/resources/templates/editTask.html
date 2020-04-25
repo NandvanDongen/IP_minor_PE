@@ -2,13 +2,13 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Add Task</title>
+    <title>Edit</title>
 </head>
 <body>
-<h2>Add task</h2>
-<form method="post" action="/tasks" th:object="${task}">
-    <p th:text="${#fields.globalErrors()}"></p>
-    <div>
+<h2>Edit task</h2>
+<div th:insert="navbar.html"/>
+<form method="post" action="/tasks/edit/{id}" th:object="${task}">
+    <p th:if="${not #fields.globalErrors().isEmpty()}"th:text="${#fields.globalErrors()}"></p>
         <label for="title">Title: </label>
         <input type="text" th:field="*{title}" id="title">
         <p th:errors="*{title}"></p>
@@ -21,7 +21,7 @@
         <label for="dueDate"> Due date</label>
         <input type="datetime-local" th:field="*{dueDate}" id="dueDate">
     </div>
-    <input type="submit" value="new task">
+    <input type="submit" value="Edit task">
 </form>
 </body>
 </html>
