@@ -12,7 +12,7 @@
 </div>
 <div th:if="${not tasks.isEmpty()}">
     <ul>
-        <li th:each="task : ${tasks}"> <span th:text="*{task.title}"/> due <span th:text="*{task.dueDate.getMonth().toString().toLowerCase()}"/>  <span th:text="*{task.dueDate.getDayOfMonth()}"/> <span th:text="*{task.dueDate.getYear() } "/>  at <span th:text="*{task.dueDate.getHour()}"/>:<span th:text="*{task.dueDate.getMinute()}"/><li/>
+        <li th:each="task : ${tasks}"> <span th:text="*{task.title}"/> due <span th:text="*{task.dueDate.getMonth().toString().toLowerCase()}"/>  <span th:text="*{task.dueDate.getDayOfMonth()}"/> <span th:text="*{task.dueDate.getYear() } "/>  at <span th:text="*{task.dueDate.getHour()}"/>:<span th:text="*{task.dueDate.getMinute()}"/>:<span th:text="*{task.id}"/> <li/>
     </ul>
 </div>
 </body>

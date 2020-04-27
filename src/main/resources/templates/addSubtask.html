@@ -1,4 +1,4 @@
-<!--<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -7,22 +7,32 @@
 <body>
 <h2>Add subtask</h2>
 <div th:insert="navbar.html"/>
-<form method="post" action="/tasks/{id}/sub/create" th:object="${task}">
+<h3>Adding sub task to the following task</h3>
+<div>
+    <p th:text="mastertask.title"/>
+    <p th:text="mastertask.description"/>
+    <p th:text="mastertask.dueDate"/>
+</div>
+<form method="post" action="/tasks/sub/create" th:object="${subtask}">
     <p th:if="${not #fields.globalErrors().isEmpty()}"th:text="${#fields.globalErrors()}"></p>
     <div>
-        <label for="title">Title: </label>
-        <input type="text" th:field="*{title}" id="title">
-        <p th:errors="*{title}"></p>
+        <label for="subTitle">Sub task title</label>
+        <input type="text" id="subTitle" th:field="*{title}">
+        <div>
+            <p th:errors="*{title}"/>
+        </div>
     </div>
     <div>
-        <input id="description" name="description" type="text" th:field="*{description}">
-        <label for="description">Description: </label>
+        <label for="subDescription">Sub task description</label>
+        <input type="text" id="subDescription" th:field="*{description}">
+        <div>
+            <p th:errors="*{title}"/>
+        </div>
     </div>
     <div>
-        <label for="dueDate"> Due date</label>
-        <input type="datetime-local" th:field="*{dueDate}" id="dueDate">
+        <input type="hidden" th:value="${mastertask.id}" name="masterTaskId" />
     </div>
-    <input type="submit" value="new task">
+    <input type="submit" value="add sub task">
 </form>
 </body>
 </html>

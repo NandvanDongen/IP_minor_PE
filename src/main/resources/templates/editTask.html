@@ -7,19 +7,37 @@
 <body>
 <h2>Edit task</h2>
 <div th:insert="navbar.html"/>
-<form method="post" action="/tasks/edit/{id}" th:object="${task}">
-    <p th:if="${not #fields.globalErrors().isEmpty()}"th:text="${#fields.globalErrors()}"></p>
+<form method="post" action="/tasks/edit" th:object="${task}">
+    <div>
+        <p th:if="${not #fields.globalErrors().isEmpty()}" th:text="${#fields.globalErrors()}"></p>
+    </div>
+    <div>
+        <label for="id"/>
+        <input id="id" type="text" th:field="*{id}" readonly>
+        <div class="danger">
+            <p th:errors="*{id}"></p>
+        </div>
+    </div>
+    <div>
         <label for="title">Title: </label>
         <input type="text" th:field="*{title}" id="title">
-        <p th:errors="*{title}"></p>
+        <div class="danger">
+            <p th:errors="*{title}"></p>
+        </div>
     </div>
     <div>
-        <input id="description" name="description" type="text" th:field="*{description}">
         <label for="description">Description: </label>
+        <input id="description" name="description" type="text" th:field="*{description}">
+        <div class="danger">
+            <p th:errors="*{description}"></p>
+        </div>
     </div>
     <div>
-        <label for="dueDate"> Due date</label>
+        <label for="dueDate">Due date</label>
         <input type="datetime-local" th:field="*{dueDate}" id="dueDate">
+        <div class="danger">
+            <p th:errors="*{dueDate}"></p>
+        </div>
     </div>
     <input type="submit" value="Edit task">
 </form>

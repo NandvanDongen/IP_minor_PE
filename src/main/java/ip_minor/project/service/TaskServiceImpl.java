@@ -1,5 +1,6 @@
 package ip_minor.project.service;
 
+import ip_minor.project.domain.SubTask;
 import ip_minor.project.domain.Task;
 import ip_minor.project.dto.TaskDTO;
 
@@ -23,6 +24,7 @@ public class TaskServiceImpl implements TaskService {
     public List<TaskDTO> getTasks() {
         return repository.findAll().stream().map(t ->{
             TaskDTO dto = new TaskDTO();
+            dto.setId(t.getId());
             dto.setTitle(t.getTitle());
             dto.setDescription(t.getDescription());
             dto.setDueDate(t.getDueDate());
@@ -31,11 +33,14 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public Task getTask(Long id) {
-        Task result = null;
+    public TaskDTO getTask(Long id) {
+        TaskDTO result = new TaskDTO();
         for (Task task:repository.findAll()) {
             if(task.getId() == id){
-                result = task;
+                result.setId(id);
+                result.setTitle(task.getTitle());
+                result.setDescription(task.getDescription());
+                result.setDueDate(task.getDueDate());
             }
         }
         return result;
@@ -57,6 +62,16 @@ public class TaskServiceImpl implements TaskService {
                 task.setTitle(taskDTO.getTitle());
                 task.setDescription(taskDTO.getDescription());
                 task.setDueDate(taskDTO.getDueDate());
+                repository.save(task);
+            }
+        }
+    }
+
+    @Override
+    public void addSubTask(Long id, SubTask subTask){
+        for (Task task: repository.findAll()) {
+            if(task.getId() == id){
+                task.addSubTask(subTask);
                 repository.save(task);
             }
         }
