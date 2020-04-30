@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" type="text/css" media="all" href="/static/css/opmaak.css" th:href="@{/static/css/opmaak.css}" />
+    <title>NavigationBar</title>
+    <link rel="stylesheet" type="text/css" media="all" href="/static/css/opmaak.css" th:href="@{/static/css/opmaak.css}" />
+</head>
+<body>
+<div>
+    <div th:fragment="navbar" class="navbar">
+        <div class="navbar-inner">
+            <a href="/">Home</a>
+            <a href="/tasks">Task overview</a>
+            <a href="/tasks/new">New Task</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

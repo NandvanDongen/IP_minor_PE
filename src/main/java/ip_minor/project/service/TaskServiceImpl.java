@@ -2,17 +2,19 @@ package ip_minor.project.service;
 
 import ip_minor.project.domain.SubTask;
 import ip_minor.project.domain.Task;
+import ip_minor.project.dto.SubTaskDTO;
 import ip_minor.project.dto.TaskDTO;
-
 import ip_minor.project.repository.TaskRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
 public class TaskServiceImpl implements TaskService {
+    @Autowired
     private final TaskRepo repository;
 
     @Autowired
@@ -28,6 +30,7 @@ public class TaskServiceImpl implements TaskService {
             dto.setTitle(t.getTitle());
             dto.setDescription(t.getDescription());
             dto.setDueDate(t.getDueDate());
+            dto.setSubtasks(t.getSubtasks());
             return dto;
         }).collect(Collectors.toList());
     }
@@ -41,6 +44,7 @@ public class TaskServiceImpl implements TaskService {
                 result.setTitle(task.getTitle());
                 result.setDescription(task.getDescription());
                 result.setDueDate(task.getDueDate());
+                result.setSubtasks(task.getSubtasks());
             }
         }
         return result;
@@ -52,6 +56,7 @@ public class TaskServiceImpl implements TaskService {
         task.setTitle(taskDTO.getTitle());
         task.setDescription(taskDTO.getDescription());
         task.setDueDate(taskDTO.getDueDate());
+        task.setSubtasks(new ArrayList<SubTask>());
         repository.save(task);
     }
 
@@ -62,16 +67,17 @@ public class TaskServiceImpl implements TaskService {
                 task.setTitle(taskDTO.getTitle());
                 task.setDescription(taskDTO.getDescription());
                 task.setDueDate(taskDTO.getDueDate());
+                task.setSubtasks(taskDTO.getSubtasks());
                 repository.save(task);
             }
         }
     }
 
     @Override
-    public void addSubTask(Long id, SubTask subTask){
+    public void addSubTask(Long id, SubTaskDTO subTaskDTO){
         for (Task task: repository.findAll()) {
             if(task.getId() == id){
-                task.addSubTask(subTask);
+                task.addSubTask(subTaskDTO);
                 repository.save(task);
             }
         }

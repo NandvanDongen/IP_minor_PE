@@ -11,7 +11,7 @@ public class SubTask {
     @NotNull
     private String title;
     private String description;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Task task;
 
     public SubTask() {

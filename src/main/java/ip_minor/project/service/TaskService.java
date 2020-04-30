@@ -1,6 +1,6 @@
 package ip_minor.project.service;
 
-import ip_minor.project.domain.SubTask;
+import ip_minor.project.dto.SubTaskDTO;
 import ip_minor.project.dto.TaskDTO;
 
 import java.util.List;
@@ -14,5 +14,5 @@ public interface TaskService {
 
     void editTask(Long id, TaskDTO taskDTO);
 
-    void addSubTask(Long id, SubTask subTask);
+    void addSubTask(Long id, SubTaskDTO subTaskDTO);
 }

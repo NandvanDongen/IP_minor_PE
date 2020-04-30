@@ -2,6 +2,8 @@ package ip_minor.project.dto;
 
 import ip_minor.project.domain.SubTask;
 
+import javax.persistence.CascadeType;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -13,6 +15,7 @@ public class TaskDTO {
     private String title;
     private String description;
     private LocalDateTime dueDate;
+    @OneToMany(cascade = CascadeType.ALL)
     private List<SubTask> subtasks;
 
     public Long getId() {
@@ -57,9 +60,5 @@ public class TaskDTO {
 
     public void addSubTask(SubTask subTask) {
         this.subtasks.add(subTask);
-    }
-
-    public void removeSubTask(SubTask subTask) {
-        this.subtasks.remove(subTask);
     }
 }

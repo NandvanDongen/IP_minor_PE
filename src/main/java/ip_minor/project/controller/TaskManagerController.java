@@ -1,6 +1,8 @@
 package ip_minor.project.controller;
 
+import ip_minor.project.domain.SubTask;
 import ip_minor.project.domain.Task;
+import ip_minor.project.dto.SubTaskDTO;
 import ip_minor.project.dto.TaskDTO;
 import ip_minor.project.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,20 +38,20 @@ public class TaskManagerController {
 
     @GetMapping("/tasks/{id}")
     public String getTaskDetail(@PathVariable("id") Long id, Model model) {
-        //TaskDTO result = taskService.getTask(id);
         model.addAttribute("task", taskService.getTask(id));
         return "taskDetails";
     }
 
     @GetMapping("/tasks/edit/{id}")
     public String editTask(@PathVariable("id") Long id, Model model) {
-        //TaskDTO task = taskService.getTask(id);
         model.addAttribute("task", taskService.getTask(id));
         return "editTask";
     }
 
     @GetMapping("/tasks/{id}/sub/create")
     public String getSubtaskForm(@PathVariable("id") Long id, Model model) {
+        SubTask subTask = new SubTask();
+        model.addAttribute("subtask", subTask);
         model.addAttribute("mastertask", taskService.getTask(id));
         return "addSubtask";
     }
@@ -74,10 +76,11 @@ public class TaskManagerController {
     }
 
     @PostMapping("/tasks/sub/create")
-    public String addSubtask(Model model,@ModelAttribute @Valid TaskDTO task, BindingResult bindingResult) {
+    public String addSubtask(@ModelAttribute @Valid SubTaskDTO subTaskDTO, @RequestParam(value = "masterTaskId") Long id, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "addSubtask";
         }
-        return "redirect:/tasks/" + task.getId();
+        taskService.addSubTask(id, subTaskDTO);
+        return "redirect:/tasks/" + id;
     }
 }
