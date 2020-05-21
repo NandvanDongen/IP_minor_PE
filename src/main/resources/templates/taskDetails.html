@@ -3,31 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" media="all" href="/static/css/opmaak.css" th:href="@{/static/css/opmaak.css}" />
-    <title>Task Detail</title>
+    <title th:text="#{taskdetails}"/>
 </head>
 <body>
-<h2>Task Detail</h2>
+<h2 th:text="#{taskdetails}"/>
 <div th:insert="navbar.html"/>
-<div th:if="${task == null}"> Task not found!</div>
+<div th:if="${task == null}"  th:text="#{tasknotfound}"/>
 <div th:unless="${ task == null}">
     <table>
         <tr>
-            <th>Title:</th>
-            <th>Description:</th>
-            <th>Due Date:</th>
+            <th  th:text="#{title}"/>
+            <th  th:text="#{desc}"/>
+            <th th:text="#{duedate}"/>
         </tr>
         <tr>
             <td th:text="${task.title}"></td>
             <td th:text="${task.description}"></td>
             <td><span th:text="*{task.dueDate.getMonth().toString().toLowerCase()}"/> <span
-                    th:text="*{task.dueDate.getDayOfMonth()}"/> <span th:text="*{task.dueDate.getYear() } "/> at <span
+                    th:text="*{task.dueDate.getDayOfMonth()}"/> <span th:text="*{task.dueDate.getYear() } "/> <span  th:text="#{at}"/> <span
                     th:text="*{task.dueDate.getHour()}"/>:<span th:text="*{task.dueDate.getMinute()}"/>
             </td>
         </tr>
         <div th:unless="${task.subtasks.size()} == 0">
             <tr>
-                <th>Subtask title:</th>
-                <th>Subtask description:</th>
+                <th  th:text="#{subtitle}"/>/th>
+                <th  th:text="#{subdesc}"/>
             </tr>
             <tr th:each="subtask : ${task.subtasks}">
                 <td th:text="${subtask.title}"></td>
@@ -36,7 +36,7 @@
         </div>
     </table>
     <div th:if="${task.subtasks.size()} == 0">
-        <p>Their are no sub tasks.</p>
+        <p  th:text="#{emptysubtask}"/>
     </div>
 </div>
 </body>

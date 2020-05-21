@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" media="all" href="/static/css/opmaak.css" th:href="@{/static/css/opmaak.css}" />
-    <title>Edit</title>
+    <title  th:text="#{edittask}"/>
 </head>
 <body>
-<h2>Edit task</h2>
+<h2  th:text="#{edittask}"/>
 <div th:insert="navbar.html"/>
 <form method="post" action="/tasks/edit" th:object="${task}">
     <div>
@@ -20,27 +20,27 @@
         </div>
     </div>
     <div>
-        <label for="title">Title: </label>
+        <label for="title"  th:text="#{title}"/>
         <input type="text" th:field="${task.title}" id="title">
         <div class="danger">
             <p th:errors="${task.title}"></p>
         </div>
     </div>
     <div>
-        <label for="description">Description: </label>
+        <label for="description" th:text="#{desc}"/>
         <input id="description" name="description" type="text" th:field="${task.description}">
         <div class="danger">
             <p th:errors="${task.description}"></p>
         </div>
     </div>
     <div>
-        <label for="dueDate">Due date</label>
+        <label for="dueDate" th:text="#{duedate}"/>
         <input type="datetime-local" th:field="${task.dueDate}" id="dueDate">
         <div class="danger">
             <p th:errors="${task.dueDate}"></p>
         </div>
     </div>
-    <input type="submit" value="Edit task">
+    <input type="submit">
 </form>
 </body>
 </html>

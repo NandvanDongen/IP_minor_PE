@@ -3,27 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" media="all" href="/static/css/opmaak.css" th:href="@{/static/css/opmaak.css}" />
-    <title>Add Task</title>
+    <title  th:text="#{addtask}"/>
 </head>
 <body>
-<h2>Add task</h2>
+<h2 th:text="#{addtask}"/>
 <div th:insert="navbar.html"/>
 <form method="post" action="/tasks/new" th:object="${task}">
     <p th:if="${not #fields.globalErrors().isEmpty()}"th:text="${#fields.globalErrors()}"></p>
     <div>
-        <label for="title">Title</label>
+        <label for="title" th:text="#{title}"/>
         <input type="text" th:field="*{title}" id="title">
         <p th:errors="*{title}"></p>
     </div>
     <div>
+        <label for="description"  th:text="#{desc}"/>
         <input id="description" name="description" type="text" th:field="*{description}">
-        <label for="description">Description</label>
     </div>
     <div>
-        <label for="dueDate"> Due date</label>
+        <label for="dueDate"  th:text="#{duedate}"/>
         <input type="datetime-local" th:field="*{dueDate}" id="dueDate">
     </div>
-    <input type="submit" value="new task">
+    <input type="submit">
 </form>
 </body>
 </html>

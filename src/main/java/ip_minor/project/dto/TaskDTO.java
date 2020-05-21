@@ -1,6 +1,7 @@
 package ip_minor.project.dto;
 
 import ip_minor.project.domain.SubTask;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.CascadeType;
 import javax.persistence.OneToMany;
@@ -14,6 +15,7 @@ public class TaskDTO {
     @NotNull
     private String title;
     private String description;
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime dueDate;
     @OneToMany(cascade = CascadeType.ALL)
     private List<SubTask> subtasks;

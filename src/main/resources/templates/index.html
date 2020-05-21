@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" media="all" href="/static/css/opmaak.css" th:href="@{/static/css/opmaak.css}" />
-    <title>Add Task</title>
+    <title th:text="#{addtask}"/>
 </head>
 <body>
-<h2>Home</h2>
+<h2 th:text="#{home}"/>
 <div th:insert="navbar.html"/>
-<p>Welcome to your taskmanager</p>
+<p th:text="#{welcome}"/>
 </body>
 </html>

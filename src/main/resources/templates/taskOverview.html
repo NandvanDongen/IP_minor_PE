@@ -3,24 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" media="all" href="/static/css/opmaak.css" th:href="@{/static/css/opmaak.css}" />
-    <title>TaskManager</title>
+    <title th:text="#{taskmanager}"/>
 </head>
 <body>
-<h2>Tasks</h2>
+<h2 th:text="#{tasks}"/>
 <div th:insert="navbar.html"/>
 <div th:if="${tasks.isEmpty()}">
-    <p> No tasks left to do.</p>
+    <p th:text="#{emptytasks}"/>
 </div>
 <div th:if="${not tasks.isEmpty()}">
     <ul>
-        <li th:each="task : ${tasks}"><span th:text="*{task.title}"/> due <span
+        <li th:each="task : ${tasks}"><span th:text="*{task.title}"/> <span th:text="#{due}"/> <span
                 th:text="*{task.dueDate.getDayOfMonth()}"/>/<span
                 th:text="*{task.dueDate.getMonth().toString().toLowerCase()}"/>/<span
-                th:text="*{task.dueDate.getYear() } "/> at
+                th:text="*{task.dueDate.getYear() } "/> <span th:text="#{at}"/>
             <span th:text="*{task.dueDate.getHour()}"/>:<span th:text="*{task.dueDate.getMinute()}"/>
-            <button th:onclick="'window.location.href=\'/tasks/' + *{task.id} + '\''">Details</button>
-            <button th:onclick="'window.location.href=\'/tasks/edit/' + ${task.id} + '\''">Edit</button>
-            <button th:onclick="'window.location.href=\'/tasks/' + ${task.id} + '/sub/create\''">Add subtask</button>
+            <button th:onclick="'window.location.href=\'/tasks/' + *{task.id} + '\''" th:text="#{details}"/>
+            <button th:onclick="'window.location.href=\'/tasks/edit/' + ${task.id} + '\''"th:text="#{edit}"/>
+            <button th:onclick="'window.location.href=\'/tasks/' + ${task.id} + '/sub/create\''"th:text="#{addsubtask}"/>
         <li/>
     </ul>
 </div>

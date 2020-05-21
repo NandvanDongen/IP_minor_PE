@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" media="all" href="/static/css/opmaak.css" th:href="@{/static/css/opmaak.css}" />
-    <title>Add subtask</title>
+    <title th:text="#{addsubtask}"/>
 </head>
 <body>
-<h2>Add subtask</h2>
+<h2 th:text="#{addsubtask}"/>
 <div th:insert="navbar.html"/>
-<h3>Adding subtask to the following task</h3>
+<h3 th:text="#{addsubtaskto}"/>
 <div>
     <p th:text="${mastertask.title}"/>
     <p th:text="${mastertask.description}"/>
@@ -18,14 +18,14 @@
 <form method="post" action="/tasks/sub/create" th:object="${subtask}">
     <p th:if="${not #fields.globalErrors().isEmpty()}"th:text="${#fields.globalErrors()}"></p>
     <div>
-        <label for="subTitle">Subtask title</label>
+        <label for="subTitle"  th:text="#{subtitle}"/>
         <input type="text" id="subTitle" th:field="*{title}" >
         <div>
             <p th:errors="*{title}"/>
         </div>
     </div>
     <div>
-        <label for="subDescription">Subtask description</label>
+        <label for="subDescription"  th:text="#{subdesc}"/>
         <input type="text" id="subDescription" th:field="*{description}">
         <div>
             <p th:errors="*{title}"/>
@@ -34,7 +34,7 @@
     <div>
         <input readonly type="" th:value="${mastertask.id}" name="masterTaskId"  hidden/>
     </div>
-    <input type="submit" value="add sub task">
+    <input type="submit">
 </form>
 </body>
 </html>
