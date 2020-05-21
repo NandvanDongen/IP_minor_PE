@@ -12,6 +12,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping("/")
@@ -38,18 +40,31 @@ public class TaskManagerController {
 
     @GetMapping("/tasks/{id}")
     public String getTaskDetail(@PathVariable("id") Long id, Model model) {
+        List<String> errors = new ArrayList<String>();
+        if (taskService.getTask(id).getId() != id) {
+            model.addAttribute("task", null);
+            return "taskDetails";
+        }
         model.addAttribute("task", taskService.getTask(id));
         return "taskDetails";
     }
 
     @GetMapping("/tasks/edit/{id}")
     public String editTask(@PathVariable("id") Long id, Model model) {
+        if (taskService.getTask(id).getId() != id) {
+            model.addAttribute("task", null);
+            return "taskDetails";
+        }
         model.addAttribute("task", taskService.getTask(id));
         return "editTask";
     }
 
     @GetMapping("/tasks/{id}/sub/create")
     public String getSubtaskForm(@PathVariable("id") Long id, Model model) {
+        if (taskService.getTask(id).getId() != id) {
+            model.addAttribute("mastertask", null);
+            return "addSubtask";
+        }
         SubTask subTask = new SubTask();
         model.addAttribute("subtask", subTask);
         model.addAttribute("mastertask", taskService.getTask(id));
@@ -67,7 +82,7 @@ public class TaskManagerController {
 
     @PostMapping("/tasks/edit")
     public String edit(@ModelAttribute @Valid TaskDTO task, BindingResult bindingResult) {
-        Long id  = task.getId();
+        Long id = task.getId();
         if (bindingResult.hasErrors()) {
             return "editTask";
         }

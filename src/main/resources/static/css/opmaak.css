@@ -1,72 +1,89 @@
 @charset "UTF-8";
 
-body {
-    background-color: white;
-    font-size: 16px;
-    font-family: Arial, Helvetica, sans-serif;
-    text-align: left;
+/*img{
+    min-width: 100%;
+}*/
+/*nav*/
+header {
+    width: 98%;
+    background: #fdfdfd;
+    border-bottom: 1px solid #eaeaea;
+    margin-bottom: 2rem;
+}
+header section {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+header section :first-child {
+    order: 2;
+}
+header section :last-child {
+    order: 1;
 }
 
-nav > * {
-    list-style-type: none;
+header nav ul,
+header nav li {
+    margin: 0;
+    padding-right: 10px;
+    display: block;
+    text-align: right;
+    white-space: nowrap;
 }
 
-#actual {
-    padding-top: 2px;
-    padding-bottom: 2px;
+header nav ul {
+    margin: 1rem;
+    margin-top: 0;
+}
+
+header nav a {
+    display: block;
 }
 
 a {
     color: black;
     text-decoration: none;
+    margin-bottom: 7px;
 }
 
 a:hover {
     text-decoration: underline;
-    text-underline: black;
 }
 
-header {
-    padding: 0px 30px 15px 30px;
+/*body*/
+body {
+    background-color: white;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
     text-align: center;
-    font-size: 30px;
 }
 
-main, footer {
-    margin: 10px auto;
+/*form*/
+.container {
     width: 100%;
-    max-width: 800px;
+    clear: both;
+    display: table;
+}
+
+.container input {
+    width: 50%;
+    clear: both;
+    text-align: center;
+}
+
+label{
     display: block;
-}
-
-img {
-    max-width: 75%;
-    min-width: 75%;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 
-h2 {
-    padding-inline-start: 40px;
-    margin-block-start: 0.75rem;
-    margin-block-end: 0.75rem;
-    color: #4a95ff;
+/*table*/
+.tafels{
+    margin-left: auto;
+    margin-right: auto;
 }
-
-
-
-/*button*/
-button {
-    border: none;
-    border-radius: 4px;
-    font-size: 20px;
-}
-
-.danger > * > * {
-    list-style-type: none;
-    color: red;
-}
-
-/*friends*/
 
 table {
     max-width: 100%;
@@ -94,4 +111,23 @@ p > label {
     padding-right: 4%;
     margin-top: 10px;
 }
+
+/*button*/
+button {
+    margin-top: 15px;
+    border-radius: 25px;
+    border: 1px;
+    font-size: 20px;
+}
+
+.tfbutton{
+    font-size: 16px;
+}
+
+/*errrors*/
+.danger > * > * {
+    list-style-type: none;
+    color: red;
+}
+
 

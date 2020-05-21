@@ -6,11 +6,11 @@
     <title th:text="#{taskdetails}"/>
 </head>
 <body>
-<h2 th:text="#{taskdetails}"/>
 <div th:insert="navbar.html"/>
+<h2 th:text="#{taskdetails}"/>
 <div th:if="${task == null}"  th:text="#{tasknotfound}"/>
-<div th:unless="${ task == null}">
-    <table>
+<div th:unless="${ task == null}" class="tafels">
+    <table class="tafels">
         <tr>
             <th  th:text="#{title}"/>
             <th  th:text="#{desc}"/>
@@ -26,17 +26,17 @@
         </tr>
         <div th:unless="${task.subtasks.size()} == 0">
             <tr>
-                <th  th:text="#{subtitle}"/>/th>
+                <th  th:text="#{subtitle}"/>
                 <th  th:text="#{subdesc}"/>
             </tr>
             <tr th:each="subtask : ${task.subtasks}">
-                <td th:text="${subtask.title}"></td>
-                <td th:text="${subtask.description}"></td>
+                <td th:text="${subtask.title}"/>
+                <td th:text="${subtask.description}"/>
             </tr>
         </div>
     </table>
     <div th:if="${task.subtasks.size()} == 0">
-        <p  th:text="#{emptysubtask}"/>
+        <p th:text="#{nosub}"></p>
     </div>
 </div>
 </body>

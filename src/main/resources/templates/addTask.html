@@ -2,28 +2,31 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" media="all" href="/static/css/opmaak.css" th:href="@{/static/css/opmaak.css}" />
-    <title  th:text="#{addtask}"/>
+    <link rel="stylesheet" type="text/css" media="all" href="/static/css/opmaak.css"
+          th:href="@{/static/css/opmaak.css}"/>
+    <title th:text="#{addtask}"/>
 </head>
 <body>
-<h2 th:text="#{addtask}"/>
 <div th:insert="navbar.html"/>
-<form method="post" action="/tasks/new" th:object="${task}">
-    <p th:if="${not #fields.globalErrors().isEmpty()}"th:text="${#fields.globalErrors()}"></p>
-    <div>
-        <label for="title" th:text="#{title}"/>
-        <input type="text" th:field="*{title}" id="title">
-        <p th:errors="*{title}"></p>
-    </div>
-    <div>
-        <label for="description"  th:text="#{desc}"/>
-        <input id="description" name="description" type="text" th:field="*{description}">
-    </div>
-    <div>
-        <label for="dueDate"  th:text="#{duedate}"/>
-        <input type="datetime-local" th:field="*{dueDate}" id="dueDate">
-    </div>
-    <input type="submit">
-</form>
+<h2 th:text="#{addtask}"/>
+<div class="container">
+    <form method="post" action="/tasks/new" th:object="${task}">
+        <p th:if="${not #fields.globalErrors().isEmpty()}" th:text="${#fields.globalErrors()}"></p>
+        <div>
+            <label for="title" th:text="#{title}"/>
+            <input type="text" th:field="*{title}" id="title">
+            <p th:errors="*{title}"></p>
+        </div>
+        <div>
+            <label for="description" th:text="#{desc}"/>
+            <input id="description" name="description" type="text" th:field="*{description}">
+        </div>
+        <div>
+            <label for="dueDate" th:text="#{duedate}"/>
+            <input type="datetime-local" th:field="*{dueDate}" id="dueDate">
+        </div>
+        <button type="submit" th:text="#{submit}"/>
+    </form>
+</div>
 </body>
 </html>
