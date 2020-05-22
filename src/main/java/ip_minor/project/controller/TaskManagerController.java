@@ -1,10 +1,10 @@
 package ip_minor.project.controller;
 
-import ip_minor.project.domain.SubTask;
-import ip_minor.project.domain.Task;
-import ip_minor.project.dto.SubTaskDTO;
-import ip_minor.project.dto.TaskDTO;
-import ip_minor.project.service.TaskService;
+import ip_minor.project.model.entity.SubTask;
+import ip_minor.project.model.entity.Task;
+import ip_minor.project.model.dto.SubTaskDTO;
+import ip_minor.project.model.dto.TaskDTO;
+import ip_minor.project.model.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

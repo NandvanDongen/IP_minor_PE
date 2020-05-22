@@ -1,7 +1,7 @@
-package ip_minor.project.service;
+package ip_minor.project.model.service;
 
-import ip_minor.project.dto.SubTaskDTO;
-import ip_minor.project.dto.TaskDTO;
+import ip_minor.project.model.dto.SubTaskDTO;
+import ip_minor.project.model.dto.TaskDTO;
 
 import java.util.List;
 

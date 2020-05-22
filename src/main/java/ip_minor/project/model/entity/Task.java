@@ -1,6 +1,6 @@
-package ip_minor.project.domain;
+package ip_minor.project.model.entity;
 
-import ip_minor.project.dto.SubTaskDTO;
+import ip_minor.project.model.dto.SubTaskDTO;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -20,6 +20,12 @@ public class Task {
     private List<SubTask> subtasks;
 
     public Task() {
+    }
+
+    public Task(String title, String description, LocalDateTime dueDate){
+        this.description = description;
+        this.title = title;
+        this.dueDate = dueDate;
     }
 
     public String getTitle() {

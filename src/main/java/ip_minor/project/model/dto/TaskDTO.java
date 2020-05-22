@@ -1,6 +1,6 @@
-package ip_minor.project.dto;
+package ip_minor.project.model.dto;
 
-import ip_minor.project.domain.SubTask;
+import ip_minor.project.model.entity.SubTask;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.CascadeType;

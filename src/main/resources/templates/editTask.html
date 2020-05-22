@@ -8,45 +8,47 @@
 </head>
 <body>
 <div th:insert="navbar.html"/>
-<h2 th:text="#{edittask}"/>
-<div th:if="${task == null}" th:text="#{tasknotfound}"/>
-<div th:unless="${task == null}">
-    <div class="container">
-        <form method="post" action="/tasks/edit" th:object="${task}">
-            <div>
-                <p th:if="${not #fields.globalErrors().isEmpty()}" th:text="${#fields.globalErrors()}"></p>
-            </div>
-            <div>
-                <label for="id"/>
-                <input readonly id="id" type="text" th:field="${task.id}" hidden>
-                <div class="danger">
-                    <p th:errors="${task.id}"></p>
+<main>
+    <h2 th:text="#{edittask}"/>
+    <div th:if="${task == null}" th:text="#{tasknotfound}"/>
+    <div th:unless="${task == null}">
+        <div class="container">
+            <form method="post" action="/tasks/edit" th:object="${task}">
+                <div>
+                    <p th:if="${not #fields.globalErrors().isEmpty()}" th:text="${#fields.globalErrors()}"></p>
                 </div>
-            </div>
-            <div>
-                <label for="title" th:text="#{title}"/>
-                <input type="text" th:field="${task.title}" id="title">
-                <div class="danger">
-                    <p th:errors="${task.title}"></p>
+                <div>
+                    <label for="id"/>
+                    <input readonly id="id" type="text" th:field="${task.id}" hidden>
+                    <div class="danger">
+                        <p th:errors="${task.id}"></p>
+                    </div>
                 </div>
-            </div>
-            <div>
-                <label for="description" th:text="#{desc}"/>
-                <input id="description" name="description" type="text" th:field="${task.description}">
-                <div class="danger">
-                    <p th:errors="${task.description}"></p>
+                <div>
+                    <label for="title" th:text="#{title}"/>
+                    <input type="text" th:field="${task.title}" id="title">
+                    <div class="danger">
+                        <p th:errors="${task.title}"></p>
+                    </div>
                 </div>
-            </div>
-            <div>
-                <label for="dueDate" th:text="#{duedate}"/>
-                <input type="datetime-local" th:field="${task.dueDate}" id="dueDate">
-                <div class="danger">
-                    <p th:errors="${task.dueDate}"></p>
+                <div>
+                    <label for="description" th:text="#{desc}"/>
+                    <input id="description" name="description" type="text" th:field="${task.description}">
+                    <div class="danger">
+                        <p th:errors="${task.description}"></p>
+                    </div>
                 </div>
-            </div>
-            <button type="submit" th:text="#{submit}"/>
-        </form>
+                <div>
+                    <label for="dueDate" th:text="#{duedate}"/>
+                    <input type="datetime-local" th:field="${task.dueDate}" id="dueDate">
+                    <div class="danger">
+                        <p th:errors="${task.dueDate}"></p>
+                    </div>
+                </div>
+                <button type="submit" th:text="#{submit}"/>
+            </form>
+        </div>
     </div>
-</div>
+</main>
 </body>
 </html>

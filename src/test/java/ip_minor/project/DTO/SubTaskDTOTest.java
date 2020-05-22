@@ -1,7 +1,7 @@
 package ip_minor.project.DTO;
 
-import ip_minor.project.domain.SubTask;
-import ip_minor.project.service.TaskService;
+import ip_minor.project.model.entity.SubTask;
+import ip_minor.project.model.service.TaskService;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 

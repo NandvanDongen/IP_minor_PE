@@ -1,13 +1,15 @@
-package ip_minor.project.service;
+package ip_minor.project.model.service;
 
-import ip_minor.project.domain.SubTask;
-import ip_minor.project.domain.Task;
-import ip_minor.project.dto.SubTaskDTO;
-import ip_minor.project.dto.TaskDTO;
-import ip_minor.project.repository.TaskRepo;
+import ip_minor.project.model.dto.SubTaskDTO;
+import ip_minor.project.model.dto.TaskDTO;
+import ip_minor.project.model.entity.SubTask;
+import ip_minor.project.model.entity.Task;
+import ip_minor.project.model.repository.TaskRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -20,6 +22,7 @@ public class TaskServiceImpl implements TaskService {
     @Autowired
     public TaskServiceImpl(TaskRepo repository){
         this.repository = repository;
+        repository.save(new Task("title","description", LocalDateTime.of(2020, Month.JUNE,21,10,45)));
     }
 
     @Override

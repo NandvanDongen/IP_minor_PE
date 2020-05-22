@@ -1,9 +1,9 @@
 /*package ip_minor.project.service;
 
-import ip_minor.project.domain.SubTask;
-import ip_minor.project.dto.SubTaskDTO;
-import ip_minor.project.dto.TaskDTO;
-import ip_minor.project.repository.TaskRepo;
+import ip_minor.project.model.entity.SubTask;
+import ip_minor.project.model.dto.SubTaskDTO;
+import ip_minor.project.model.dto.TaskDTO;
+import ip_minor.project.model.repository.TaskRepo;
 import org.hibernate.cfg.annotations.reflection.JPAMetadataProvider;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;

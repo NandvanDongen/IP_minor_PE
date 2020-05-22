@@ -7,7 +7,6 @@
     <link href="../static/css/opmaak.css" th:href="@{/css/opmaak.css}" rel="stylesheet"/>
     </head>
 <body>
-<!--<img src="css/taskbanner.jpg"/>!-->
 <header>
     <nav th:fragment="navbar" class="navbar">
         <h1 th:text="#{taskmanager}"></h1>
@@ -15,6 +14,7 @@
             <li><a href="/" th:text="#{home}"/></li>
             <li><a href="/tasks" th:text="#{taskoverview}"/></li>
             <li><a href="/tasks/new" th:text="#{newtask}"/></li>
+            <li><a href="/logout" th:text="#{logout}"></a> </li>
         </ul>
         <span th:text="#{lang.change}"></span>:
         <select id="locales">

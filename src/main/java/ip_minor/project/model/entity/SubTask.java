@@ -1,18 +1,21 @@
-package ip_minor.project.dto;
+package ip_minor.project.model.entity;
 
-import ip_minor.project.domain.Task;
-
-import javax.persistence.CascadeType;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-public class SubTaskDTO {
+@Entity
+public class SubTask {
+    @Id
+    @GeneratedValue
     private Long id;
     @NotNull
     private String title;
     private String description;
     @ManyToOne(cascade = CascadeType.ALL)
     private Task task;
+
+    public SubTask() {
+    }
 
     public String getTitle() {
         return title;
