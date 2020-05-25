@@ -10,7 +10,7 @@
 <main>
     <h2 th:text="#{addtask}"/>
     <div class="container">
-        <form method="post" action="/tasks/new" th:object="${task}">
+        <form method="post" th:action="@{/tasks/new}" th:object="${task}">
             <p th:if="${not #fields.globalErrors().isEmpty()}" th:text="${#fields.globalErrors()}"></p>
             <div>
                 <label for="title" th:text="#{title}"/>

@@ -5,7 +5,7 @@
     <meta charset="UTF-8"/>
     <title th:text="#{Navigationbar}"/>
     <link href="../static/css/opmaak.css" th:href="@{/css/opmaak.css}" rel="stylesheet"/>
-    </head>
+</head>
 <body>
 <header>
     <nav th:fragment="navbar" class="navbar">
@@ -14,12 +14,12 @@
             <li><a href="/" th:text="#{home}"/></li>
             <li><a href="/tasks" th:text="#{taskoverview}"/></li>
             <li><a href="/tasks/new" th:text="#{newtask}"/></li>
-            <li><a href="/logout" th:text="#{logout}"></a> </li>
+            <li><a href="/logout" th:text="#{logout}"></a></li>
         </ul>
         <span th:text="#{lang.change}"></span>:
         <select id="locales">
             <option value="en" th:text="#{lang.en}"></option>
-            <option value="en" th:text="#{lang.nl}"></option>
+            <option value="nl" th:text="#{lang.nl}"></option>
         </select>
     </nav>
 </header>

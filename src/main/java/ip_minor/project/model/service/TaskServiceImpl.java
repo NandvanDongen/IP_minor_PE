@@ -20,14 +20,14 @@ public class TaskServiceImpl implements TaskService {
     private final TaskRepo repository;
 
     @Autowired
-    public TaskServiceImpl(TaskRepo repository){
+    public TaskServiceImpl(TaskRepo repository) {
         this.repository = repository;
-        repository.save(new Task("title","description", LocalDateTime.of(2020, Month.JUNE,21,10,45)));
+        repository.save(new Task("title", "description", LocalDateTime.of(2020, Month.JUNE, 21, 10, 45)));
     }
 
     @Override
     public List<TaskDTO> getTasks() {
-        return repository.findAll().stream().map(t ->{
+        return repository.findAll().stream().map(t -> {
             TaskDTO dto = new TaskDTO();
             dto.setId(t.getId());
             dto.setTitle(t.getTitle());
@@ -41,8 +41,8 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public TaskDTO getTask(Long id) {
         TaskDTO result = new TaskDTO();
-        for (Task task:repository.findAll()) {
-            if(task.getId() == id){
+        for (Task task : repository.findAll()) {
+            if (task.getId() == id) {
                 result.setId(id);
                 result.setTitle(task.getTitle());
                 result.setDescription(task.getDescription());
@@ -64,9 +64,9 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public void editTask(Long id, TaskDTO taskDTO){
-        for (Task task: repository.findAll()) {
-            if(task.getId() == id){
+    public void editTask(Long id, TaskDTO taskDTO) {
+        for (Task task : repository.findAll()) {
+            if (task.getId() == id) {
                 task.setTitle(taskDTO.getTitle());
                 task.setDescription(taskDTO.getDescription());
                 task.setDueDate(taskDTO.getDueDate());
@@ -77,12 +77,25 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public void addSubTask(Long id, SubTaskDTO subTaskDTO){
-        for (Task task: repository.findAll()) {
-            if(task.getId() == id){
+    public void addSubTask(Long id, SubTaskDTO subTaskDTO) {
+        for (Task task : repository.findAll()) {
+            if (task.getId() == id) {
                 task.addSubTask(subTaskDTO);
                 repository.save(task);
             }
         }
     }
+
+    public void deleteTasks() {
+        repository.deleteAll();
+    }
+
+    public void deleteTask(Long id) {
+        for (Task task : repository.findAll()) {
+            if (task.getId() == id) {
+                repository.delete(task);
+            }
+        }
+    }
+
 }

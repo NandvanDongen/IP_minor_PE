@@ -1,7 +1,6 @@
-package ip_minor.project.domain;
+package ip_minor.project.model.entity;
 
-import ip_minor.project.model.entity.SubTask;
-import ip_minor.project.model.entity.Task;
+import ip_minor.project.model.dto.SubTaskDTO;
 import ip_minor.project.model.service.TaskService;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -25,6 +24,7 @@ class TaskTest {
 		task.setTitle("title");
 
 		// checks
+		assertNotNull(task.getTitle());
 		assertEquals("title", task.getTitle());
 }
 	@Test
@@ -36,6 +36,7 @@ class TaskTest {
 		task.setDescription("description");
 
 		// checks
+		assertNotNull(task.getDescription());
 		assertEquals("description",task.getDescription());
 	}
 
@@ -73,23 +74,23 @@ class TaskTest {
 	@Test
 	public void testAddSubTask() {
 		// setup
-		// setup
 		Task task = new Task();
-		List<SubTask> subTasks = new ArrayList<SubTask>();
-		SubTask subTask = new SubTask();
-		subTask.setTitle("title");
-		subTask.setDescription("description");
-		subTasks.add(subTask);
+		task.setTitle("title");
+		task.setDescription("desc");
+		task.setDueDate(LocalDateTime.of(2020,05,05,20,20));
+		task.setSubtasks(new ArrayList<SubTask>()) ;
+		SubTaskDTO subTask = new SubTaskDTO();
+		subTask.setTitle("subtitle");
+		subTask.setDescription("subdesc");
 
 		// method to be tested
-		task.setSubtasks(subTasks);
+		task.addSubTask(subTask);
 
 		// checks
-		assertNotNull(task.getSubtasks());
 		assertFalse(task.getSubtasks().size() == 0);
-		assertEquals(subTask,task.getSubtasks().get(0));
-		assertEquals("title",task.getSubtasks().get(0).getTitle());
-		assertEquals("description",task.getSubtasks().get(0).getDescription());
+		assertNotNull(task.getSubtasks().get(0));
+		assertEquals("subtitle",task.getSubtasks().get(0).getTitle());
+		assertEquals("subdesc",task.getSubtasks().get(0).getDescription());
 	}
 
 }

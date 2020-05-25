@@ -5,22 +5,26 @@ import ip_minor.project.model.UserRole;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 public class User {
     @Id
     @GeneratedValue
     private Long id;
-
+    @NotEmpty
     private String username;
+    @NotEmpty
     private String password;
     private UserRole role;
 
-    public User(){}
-    public User(String username, String password, UserRole userRole){
+    public User() {
+    }
+
+    public User(String username, String password, UserRole userRole) {
         this.username = username;
         this.password = password;
-        this.role= role;
+        this.role = role;
     }
 
     public Long getId() {

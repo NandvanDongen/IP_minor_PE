@@ -22,7 +22,7 @@ public class Task {
     public Task() {
     }
 
-    public Task(String title, String description, LocalDateTime dueDate){
+    public Task(String title, String description, LocalDateTime dueDate) {
         this.description = description;
         this.title = title;
         this.dueDate = dueDate;
@@ -64,15 +64,7 @@ public class Task {
         this.subtasks = subtasks;
     }
 
-    public void addSubTask(SubTask subTask) {
-        this.subtasks.add(subTask);
-    }
-
-    public void removeSubTask(SubTask subTask) {
-        this.subtasks.remove(subTask);
-    }
-
-    public void addSubTask(SubTaskDTO subTaskDTO){
+    public void addSubTask(SubTaskDTO subTaskDTO) {
         SubTask subTask = new SubTask();
         subTask.setTitle(subTaskDTO.getTitle());
         subTask.setDescription(subTaskDTO.getDescription());
