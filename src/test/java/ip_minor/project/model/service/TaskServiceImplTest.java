@@ -59,7 +59,7 @@ class TaskServiceImplTest {
 		// setup see @BeforeEach
 
 		// method to be tested
-		TaskDTO task = taskService.getTask((long) 6);
+		TaskDTO task = taskService.getTask((long) 5);
 
 		// checks
 		assertNotNull(task);
