@@ -26,6 +26,11 @@ public class TaskManagerController {
         return "index";
     }
 
+    @GetMapping("/accessdenied")
+    public String getDenied() {
+        return "accessdenied";
+    }
+
     @GetMapping("/tasks")
     public String getTasks(Model model) {
         model.addAttribute("tasks", taskService.getTasks());
@@ -97,8 +102,9 @@ public class TaskManagerController {
     }
 
     @PostMapping("/tasks/sub/create")
-    public String addSubtask(@ModelAttribute("subtask") @Valid SubTaskDTO subTaskDTO, BindingResult bindingResult, @RequestParam(value = "masterTaskId") Long id) {
+    public String addSubtask(@ModelAttribute("subtask") @Valid SubTaskDTO subTaskDTO, BindingResult bindingResult, @RequestParam(value = "masterTaskId") Long id, Model model) {
         if (bindingResult.hasErrors()) {
+            model.addAttribute("mastertask", taskService.getTask(id));
             return "addSubtask";
         }
         taskService.addSubTask(id, subTaskDTO);
