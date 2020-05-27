@@ -2,8 +2,13 @@ package ip_minor.project.model.dto;
 
 import ip_minor.project.model.UserRole;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 public class UserDTO {
     private Long id;
+    @NotNull
+    @NotEmpty
     private String username;
     private UserRole role;
 

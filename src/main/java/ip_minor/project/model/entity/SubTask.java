@@ -1,6 +1,7 @@
 package ip_minor.project.model.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -9,7 +10,10 @@ public class SubTask {
     @GeneratedValue
     private Long id;
     @NotNull
+    @NotEmpty
     private String title;
+    @NotNull
+    @NotEmpty
     private String description;
     @ManyToOne(cascade = CascadeType.ALL)
     private Task task;

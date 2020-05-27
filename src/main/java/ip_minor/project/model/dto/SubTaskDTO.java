@@ -4,12 +4,16 @@ import ip_minor.project.model.entity.Task;
 
 import javax.persistence.CascadeType;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 public class SubTaskDTO {
     private Long id;
     @NotNull
+    @NotEmpty
     private String title;
+    @NotNull
+    @NotEmpty
     private String description;
     @ManyToOne(cascade = CascadeType.ALL)
     private Task task;

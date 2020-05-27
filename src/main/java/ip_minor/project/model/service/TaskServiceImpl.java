@@ -22,7 +22,6 @@ public class TaskServiceImpl implements TaskService {
     @Autowired
     public TaskServiceImpl(TaskRepo repository) {
         this.repository = repository;
-        repository.save(new Task("title", "description", LocalDateTime.of(2020, Month.JUNE, 21, 10, 45)));
     }
 
     @Override

@@ -1,8 +1,10 @@
 package ip_minor.project.model.entity;
 
 import ip_minor.project.model.dto.SubTaskDTO;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -13,8 +15,12 @@ public class Task {
     @GeneratedValue
     private Long id;
     @NotNull
+    @NotEmpty
     private String title;
+    @NotNull
+    @NotEmpty
     private String description;
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime dueDate;
     @OneToMany(cascade = CascadeType.ALL)
     private List<SubTask> subtasks;

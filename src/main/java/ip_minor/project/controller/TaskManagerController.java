@@ -72,8 +72,11 @@ public class TaskManagerController {
     }
 
     @PostMapping("/tasks/new")
-    public String addtask(@ModelAttribute @Valid TaskDTO task, BindingResult bindingResult) {
+    public String addtask(@ModelAttribute("task") @Valid TaskDTO task, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
+            return "addTask";
+        }
+        if (task.getDueDate() == null){
             return "addTask";
         }
         taskService.addTask(task);
@@ -81,17 +84,20 @@ public class TaskManagerController {
     }
 
     @PostMapping("/tasks/edit")
-    public String edit(@ModelAttribute @Valid TaskDTO task, BindingResult bindingResult) {
+    public String edit(@ModelAttribute("task") @Valid TaskDTO task, BindingResult bindingResult) {
         Long id = task.getId();
         if (bindingResult.hasErrors()) {
             return "editTask";
+        }
+        if (task.getDueDate() == null){
+            return "addTask";
         }
         taskService.editTask(id, task);
         return "redirect:/tasks/" + task.getId();
     }
 
     @PostMapping("/tasks/sub/create")
-    public String addSubtask(@ModelAttribute @Valid SubTaskDTO subTaskDTO, @RequestParam(value = "masterTaskId") Long id, BindingResult bindingResult) {
+    public String addSubtask(@ModelAttribute("subtask") @Valid SubTaskDTO subTaskDTO, BindingResult bindingResult, @RequestParam(value = "masterTaskId") Long id) {
         if (bindingResult.hasErrors()) {
             return "addSubtask";
         }

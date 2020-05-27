@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class User {
@@ -13,8 +14,10 @@ public class User {
     @GeneratedValue
     private Long id;
     @NotEmpty
+    @NotNull
     private String username;
     @NotEmpty
+    @NotNull
     private String password;
     private UserRole role;
 
