@@ -10,6 +10,19 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class UserDTOTest {
     @Test
+    public void testSetId() {
+        // setup
+        UserDTO user = new UserDTO();
+
+        // method to be tested
+        user.setId((long) 1 );
+
+        // checks
+        assertNotNull(user.getId());
+        assertEquals((long) 1, user.getId());
+    }
+
+    @Test
     public void testSetUsername() {
         // setup
         UserDTO user = new UserDTO();

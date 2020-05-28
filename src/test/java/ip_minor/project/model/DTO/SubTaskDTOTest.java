@@ -1,5 +1,6 @@
 package ip_minor.project.model.DTO;
 
+import ip_minor.project.model.dto.SubTaskDTO;
 import ip_minor.project.model.entity.SubTask;
 import ip_minor.project.model.service.TaskService;
 import org.junit.jupiter.api.Test;
@@ -10,6 +11,18 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @SpringBootTest
 class SubTaskDTOTest {
     private TaskService taskService;
+
+    @Test
+    public void testSetId() {
+        // setup
+        SubTaskDTO task = new SubTaskDTO();
+
+        // method to be tested
+        task.setId((long) 1);
+
+        // checks
+        assertEquals((long) 1, task.getId());
+    }
 
     @Test
     public void testSetTitle() {

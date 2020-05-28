@@ -58,8 +58,10 @@ class TaskServiceImplTest {
 	public void testGetTask() {
 		// setup see @BeforeEach
 
+
 		// method to be tested
-		TaskDTO task = taskService.getTask((long) 5);
+		Long id = taskService.getTasks().get(0).getId();
+		TaskDTO task = taskService.getTask((long) id);
 
 		// checks
 		assertNotNull(task);
@@ -74,7 +76,8 @@ class TaskServiceImplTest {
 		// method to be tested addTask (done in setup)
 
 		// checks
-		TaskDTO task = taskService.getTask((long) 4);
+		Long id = taskService.getTasks().get(0).getId();
+		TaskDTO task = taskService.getTask((long) id);
 		assertNotNull(task);
 		assertEquals("title", task.getTitle());
 		assertEquals("description",task.getDescription() );
@@ -91,10 +94,11 @@ class TaskServiceImplTest {
 		taskDTOEdit.setDueDate(LocalDateTime.of(2021, 05, 20, 20, 50));
 
 		// method to be tested
-		taskService.editTask((long) 2,taskDTOEdit);
+		Long id = taskService.getTasks().get(0).getId();
+		taskService.editTask((long) id,taskDTOEdit);
 
 		// checks
-		TaskDTO task = taskService.getTask((long) 2);
+		TaskDTO task = taskService.getTask((long) id);
 		assertNotNull(task);
 		assertEquals("editedtitle",task.getTitle() );
 		assertEquals("editeddescription",task.getDescription());

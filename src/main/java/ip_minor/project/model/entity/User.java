@@ -27,7 +27,7 @@ public class User {
     public User(String username, String password, UserRole userRole) {
         this.username = username;
         this.password = password;
-        this.role = role;
+        this.role = userRole;
     }
 
     public Long getId() {

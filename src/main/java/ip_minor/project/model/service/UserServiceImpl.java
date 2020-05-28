@@ -48,7 +48,7 @@ public class UserServiceImpl implements UserService {
         return convert(user);
     }
 
-    private UserDTO convert(User user) {
+    protected UserDTO convert(User user) {
         UserDTO dto = new UserDTO();
         dto.setId(user.getId());
         dto.setUsername(user.getUsername());

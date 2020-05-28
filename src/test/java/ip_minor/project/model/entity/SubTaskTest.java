@@ -11,6 +11,18 @@ class SubTaskTest {
 	private TaskService taskService;
 
 	@Test
+	public void testSetID() {
+		// setup
+		SubTask task = new SubTask();
+
+		// method to be tested
+		task.setId((long) 1);
+
+		// checks
+		assertEquals((long) 1 , task.getId());
+	}
+
+	@Test
 	public void testSetTitle() {
 		// setup
 		SubTask task = new SubTask();
@@ -20,7 +32,7 @@ class SubTaskTest {
 
 		// checks
 		assertEquals("title", task.getTitle());
-}
+	}
 	@Test
 	public void testSetDescription() {
 		// setup
