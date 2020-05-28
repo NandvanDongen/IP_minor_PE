@@ -23,6 +23,7 @@ public class UserServiceImpl implements UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = repository.findByUsername(username);
@@ -33,11 +34,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDTO createUser(CreateUserDTO userDTO) {
+    public UserDTO createUser(CreateUserDTO userDTO) throws Exception {
+        for(User user : repository.findAll()){
+            if(user.getUsername().equals(userDTO.getUsername())){
+                throw new Exception("Username in use");
+            }
+        }
         User user = new User();
         user.setUsername(userDTO.getUsername());
         user.setPassword(passwordEncoder.encode(userDTO.getPassword()));
-        user.setRole(userDTO.getUsername().endsWith("a") ? UserRole.ADMIN : UserRole.USER);
+        user.setRole(userDTO.getUsername().endsWith("admin") ? UserRole.ADMIN : UserRole.USER);
         user = repository.save(user);
         return convert(user);
     }

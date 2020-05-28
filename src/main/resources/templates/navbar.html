@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:security="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml"
       xsi:schemaLocation="http://www.thymeleaf.org ">
 <head>
     <meta charset="UTF-8"/>
@@ -18,8 +19,8 @@
         </ul>
         <span th:text="#{lang.change}"></span>:
         <select id="locales">
-            <option value="en" th:text="#{lang.en}"></option>
-            <option value="nl" th:text="#{lang.nl}"></option>
+            <option value="en" th:text="#{lang.en}">
+            <option value="nl" th:text="#{lang.nl}"/>
         </select>
     </nav>
 </header>
@@ -38,6 +39,6 @@
             } else {
                 window.location.replace(window.location.href + '?lang=' + selectedOption);
             }
-        });
+        })
     });
 </script>

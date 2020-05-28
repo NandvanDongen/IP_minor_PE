@@ -8,7 +8,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import javax.validation.Valid;
 
 @Controller
@@ -19,6 +18,13 @@ public class UserController {
         this.userService = userService;
     }
 
+    @GetMapping("/login")
+    public String getLoginForm(Model model) {
+        String error = null;
+        model.addAttribute("usedname", error);
+        return "signinform";
+    }
+
     @GetMapping("/signup")
     public String getCreateUser(Model model) {
         model.addAttribute("user", new CreateUserDTO());
@@ -26,17 +32,21 @@ public class UserController {
     }
 
     @PostMapping("/signup")
-    public String postCreateUser(@ModelAttribute("user") @Valid CreateUserDTO user, BindingResult bindingResult) {
+    public String postCreateUser(@ModelAttribute("user")@Valid CreateUserDTO user, BindingResult bindingResult, Model model) {
+        String error = null;
         if (bindingResult.hasErrors()) {
+            model.addAttribute("usedname", error);
             return "signupform";
         }
-        userService.createUser(user);
-        return "redirect:/login";
-    }
-
-    @GetMapping("/login")
-    public String getLoginForm() {
-        return "signinform";
+        try{
+            userService.createUser(user);
+            model.addAttribute("usedname", error);
+            return "redirect:/login";
+        }catch (Exception e){
+            error = e.getMessage();
+            model.addAttribute("usedname", error);
+            return "signupform";
+        }
     }
 }
 

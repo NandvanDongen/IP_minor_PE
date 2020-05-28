@@ -15,6 +15,7 @@
                 <label for="username" th:text="#{username}"/>
                 <input type="text" th:field="*{username}">
                 <p th:errors="*{username}"></p>
+                <p  th:if="${usedname} != null" th:text="#{usernameused}"/>
             </div>
             <div>
                 <label for="password" th:text="#{pass}">Password:</label>
